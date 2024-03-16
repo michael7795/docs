@@ -1,0 +1,19 @@
+---
+title: "Advanced Setup"
+description: "The Decipher setup process allows for some additional customizability beyond the defaults."
+---
+
+# Disabling collection of Request Data
+By default, Decipher collects Request bodies to enhance debugability. This can be disabled by updating the setup initialization:
+
+## For TypeScript/JavaScript
+Set the `exclude_request_body` boolean when [initializing Decipher](/introduction) as below.
+```typescript
+{
+    // A codebase name of your choice to identify errors in Decipher.
+    codebase_id: "CODEBASE_NAME_OF_MY_CHOICE",
+    customer_id: "MY_CUSTOMER_ID",
+    exclude_request_body: true
+}
+```
+Decipher will no longer collect any request bodies.
