@@ -3,7 +3,7 @@
   "name": "Decipher AI Docs",
   "logo": {
     "dark": "/logo/icon.png",
-    "light":  "/logo/icon.png"
+    "light": "/logo/icon.png"
   },
   "favicon": "/logo/icon.png",
   "colors": {
@@ -28,15 +28,33 @@
   "navigation": [
     {
       "group": "Introduction",
-      "pages": ["introduction"] 
+      "pages": [
+        "introduction"
+      ]
     },
     {
       "group": "Get Started",
       "pages": [
         {
           "group": "Frameworks",
-          "pages": ["next.js", "express.js", "flask"]
+          "pages": [
+            "next.js",
+            "express.js",
+            "flask"
+          ]
         }
+      ]
+    },
+    {
+      "group": "Alerts",
+      "pages": [
+        "alerts"
+      ]
+    },
+    {
+      "group": "Advanced",
+      "pages": [
+        "advanced"
       ]
     }
   ],
