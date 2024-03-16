@@ -28,9 +28,9 @@ import { DecipherRequestHandler, DecipherErrorHandler } from '@decipher-sdk/expr
 const app = express();
 // IMPORTANT: The DecipherRequestHandler must be the first middleware on the app.
 app.use(DecipherRequestHandler({
-    // A codebase name of your choice to identify errors in Decipher.
-    codebase_id: "CODEBASE_NAME_OF_MY_CHOICE",
-    customer_id: "MY_CUSTOMER_ID_FROM_STEP_1"
+   // A codebase name of your choice to identify errors in Decipher.
+   codebase_id: "CODEBASE_NAME_OF_MY_CHOICE",
+   customer_id: "MY_CUSTOMER_ID_FROM_STEP_1"
 }));
 
 // Your controllers
