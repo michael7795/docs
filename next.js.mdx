@@ -1,0 +1,78 @@
+---
+title: "Next.js"
+description: "Decipher’s Next.js SDK allows for automatic capture of errors including helpful details like logs and raw payload data."
+---
+
+## Step 1: Sign in to Decipher
+
+Sign in to [Decipher](https://prod.getdecipher.com) using **your work email address** and a `customer_id` will be automatically created for you, which you'll use in the next step.
+
+## Step 2: Integrate the SDK
+
+### Install the SDK
+```shell Terminal
+npm install @decipher-sdk/nextjs@latest
+```
+
+### Update your API routes
+
+<AccordionGroup>
+  <Accordion icon="rectangle-terminal" title="App Router">
+
+    The steps below apply if you're using [Next.js App Router](https://nextjs.org/docs/app).
+
+    Import `withDecipher` into your route files and wrap your handlers as below.
+    ```typescript src/app/api/example/route.ts
+import type { NextRequest, NextResponse } from "next";
+import { withDecipher } from "@decipher-sdk/nextjs";
+
+async function handler(req: NextRequest) {
+        const body = await req.json();
+        return NextResponse.json({ message: 'Processed successfully' },
+                                 { status: 200 })
+}
+
+export const POST = withDecipher(handler, {
+        // A codebase name of your choice to identify errors in Decipher.
+        codebase_id: 'CODEBASE_NAME_OF_MY_CHOICE',
+        customer_id: 'MY_CUSTOMER_ID_FROM_STEP_1'
+});
+```
+  </Accordion>
+  <Accordion icon="rectangle-terminal" title="Pages Router">
+        The steps below apply if you're using [Next.js Pages Router](https://nextjs.org/docs/pages).
+
+    Import `wrapApiHandlerWithDecipher` into your route files and wrap your handlers as below.
+    ```typescript src/pages/api/example/route.ts
+import type { NextApiRequest, NextApiResponse } from "next";
+import { wrapApiHandlerWithDecipher } from "decipher-sdk";
+
+const handler = (req: NextApiRequest, res: NextApiResponse) => {
+        res.status(200).json({ name: "Jane Smith" });
+};
+
+export default wrapApiHandlerWithDecipher(handler, {
+        // A codebase name of your choice to identify errors in Decipher.
+        codebase_id: "CODEBASE_NAME_OF_MY_CHOICE",
+        customer_id: "MY_CUSTOMER_ID_FROM_STEP_1"
+});
+```
+  </Accordion>
+</AccordionGroup>
+
+If you don't use tRPC, you're done! Decipher will now monitor and surface all your errors and exceptions on [the dashboard](https://www.prod.getdecipher.com).
+
+## [Optional] Step 3: For apps using tRPC, add the tRPC Middleware.
+ Import `decipherTrpcMiddleware` and add it to the relevant procedure as below.
+    ```typescript src/server/api/trpc.ts
+// ...
+import { decipherTrpcMiddleware } from "@decipher-sdk/nextjs";
+
+// ...
+export const publicProcedure = t.procedure.use(decipherTrpcMiddleware({
+          // A codebase name of your choice to identify errors in Decipher.
+          codebase_id: "CODEBASE_NAME_OF_MY_CHOICE",
+          customer_id: "MY_CUSTOMER_ID_FROM_STEP_1"
+}));
+```
+That's it! Decipher will now monitor and surface all your errors and exceptions on [the dashboard](https://www.prod.getdecipher.com).

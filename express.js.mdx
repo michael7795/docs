@@ -1,0 +1,42 @@
+---
+title: "Express.js"
+description: "Decipher’s Express.js SDK allows for automatic capture of errors including helpful details like logs and raw payload data."
+---
+
+## Step 1: Sign in to Decipher
+
+Sign in to [Decipher](https://prod.getdecipher.com) using **your work email address** and a `customer_id` will be automatically created for you, which you'll use in the next step.
+
+## Step 2: Integrate the SDK
+
+### Install the SDK
+
+```shell Terminal
+npm install @decipher-sdk/express@latest
+```
+
+### Instrumenting your Express app
+
+Import `DecipherRequestHandler` and `DecipherErrorHandler` and call `app.use` on them as below.
+
+> **IMPORTANT:** You must add `DecipherRequestHandler` **before** any other middleware and `DecipherErrorHandler` **immediately after** your controllers/endpoints to ensure errors are captured correctly.
+
+```typescript app.ts
+// ...other imports
+import { DecipherRequestHandler, DecipherErrorHandler } from '@decipher-sdk/express';
+
+const app = express();
+// IMPORTANT: The DecipherRequestHandler must be the first middleware on the app.
+app.use(DecipherRequestHandler({
+    // A codebase name of your choice to identify errors in Decipher.
+    codebase_id: "CODEBASE_NAME_OF_MY_CHOICE",
+    customer_id: "MY_CUSTOMER_ID_FROM_STEP_1"
+}));
+
+// Your controllers
+app.get("/", ...)
+app.get("/submit", ...)
+// IMPORTANT: The error handler must be immediately after the controllers.
+app.use(DecipherErrorHandler)
+```
+That's it! Decipher will now monitor and surface all your errors and exceptions on [the dashboard](https://www.prod.getdecipher.com).
