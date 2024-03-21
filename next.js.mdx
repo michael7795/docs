@@ -34,8 +34,8 @@ async function handler(req: NextRequest) {
 
 export const POST = withDecipher(handler, {
        // A codebase name of your choice to identify errors in Decipher.
-       codebase_id: "CODEBASE_NAME_OF_MY_CHOICE",
-       customer_id: "MY_CUSTOMER_ID_FROM_STEP_1"
+       codebaseId: "CODEBASE_NAME_OF_MY_CHOICE",
+       customerId: "MY_CUSTOMER_ID_FROM_STEP_1"
 });
 ```
   </Accordion>
@@ -53,8 +53,8 @@ const handler = (req: NextApiRequest, res: NextApiResponse) => {
 
 export default wrapApiHandlerWithDecipher(handler, {
        // A codebase name of your choice to identify errors in Decipher.
-       codebase_id: "CODEBASE_NAME_OF_MY_CHOICE",
-       customer_id: "MY_CUSTOMER_ID_FROM_STEP_1"
+       codebaseId: "CODEBASE_NAME_OF_MY_CHOICE",
+       customerId: "MY_CUSTOMER_ID_FROM_STEP_1"
 });
 ```
   </Accordion>
@@ -71,8 +71,8 @@ import { decipherTrpcMiddleware } from "@decipher-sdk/nextjs";
 // ...
 export const publicProcedure = t.procedure.use(decipherTrpcMiddleware({
        // A codebase name of your choice to identify errors in Decipher.
-       codebase_id: "CODEBASE_NAME_OF_MY_CHOICE",
-       customer_id: "MY_CUSTOMER_ID_FROM_STEP_1"
+       codebaseId: "CODEBASE_NAME_OF_MY_CHOICE",
+       customerId: "MY_CUSTOMER_ID_FROM_STEP_1"
 }));
 ```
 That's it! Decipher will now monitor and surface all your errors and exceptions on [the dashboard](https://www.prod.getdecipher.com).

@@ -7,13 +7,30 @@ description: "The Decipher setup process allows for some additional customizabil
 By default, Decipher collects Request bodies to enhance debugability. This can be disabled by updating the setup initialization:
 
 ## For TypeScript/JavaScript
-Set the `exclude_request_body` boolean when [initializing Decipher](/intro) as below.
+Set the `excludeRequestBody` boolean when [initializing Decipher](/intro) as below.
 ```typescript
 {
     // A codebase name of your choice to identify errors in Decipher.
-    codebase_id: "CODEBASE_NAME_OF_MY_CHOICE",
-    customer_id: "MY_CUSTOMER_ID",
-    exclude_request_body: true
+    codebaseId: "CODEBASE_NAME_OF_MY_CHOICE",
+    customerId: "MY_CUSTOMER_ID",
+    excludeRequestBody: true
+}
+```
+Decipher will no longer collect any request bodies.
+
+# Disabling local / non-production errors
+By default, Decipher shows and alerts on all errors, including local ones. This can be changed by updating the setup initialization.
+
+## For TypeScript/JavaScript
+Set the config field `environment` to **anything other than** `"production"` for environments in which errors that should not be shown/alerted on, when [initializing Decipher](/intro) as below.
+
+This config field defaults to `"production"` if not explicitly set.
+```typescript
+{
+    // A codebase name of your choice to identify errors in Decipher.
+    codebaseId: "CODEBASE_NAME_OF_MY_CHOICE",
+    customerId: "MY_CUSTOMER_ID",
+    environment: "dev" // or process.env.MY_ENVIRONMENT_VARIABLE
 }
 ```
 Decipher will no longer collect any request bodies.
