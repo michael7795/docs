@@ -17,26 +17,26 @@ npm install @decipher-sdk/express@latest
 
 ### Instrumenting your Express app
 
-Import `DecipherRequestHandler` and `DecipherErrorHandler` and call `app.use` on them as below.
+Import `Decipher`, initialize it, and call `app.use` on it as below.
 
 > **IMPORTANT:** You must add `DecipherRequestHandler` **before** any other middleware and `DecipherErrorHandler` **immediately after** your controllers/endpoints to ensure errors are captured correctly.
 
 ```typescript app.ts
 // ...other imports
-import { DecipherRequestHandler, DecipherErrorHandler } from '@decipher-sdk/express';
+const Decipher = require('@decipher-sdk/express');
 
 const app = express();
-// IMPORTANT: The DecipherRequestHandler must be the first middleware on the app.
-app.use(DecipherRequestHandler({
-   // A codebase name of your choice to identify errors in Decipher.
-   codebase_id: "CODEBASE_NAME_OF_MY_CHOICE",
-   customer_id: "MY_CUSTOMER_ID_FROM_STEP_1"
-}));
+
+// A codebase name of your choice to identify errors in Decipher.
+Decipher.init({ codebase_id: "CODEBASE_NAME_OF_MY_CHOICE", customer_id: "MY_CUSTOMER_ID_FROM_STEP_1"})
+
+// IMPORTANT: The Decipher Request Handler must be the first middleware on the app.
+app.use(Decipher.Handlers.requestHandler());
 
 // Your controllers
 app.get("/", ...)
 app.get("/submit", ...)
-// IMPORTANT: The error handler must be immediately after the controllers.
-app.use(DecipherErrorHandler)
+// IMPORTANT: The Decipher error handler must be immediately after the controllers.
+app.use(Decipher.Handlers.errorHandler);
 ```
 That's it! Decipher will now monitor and surface all your errors and exceptions on [the dashboard](https://www.prod.getdecipher.com).
