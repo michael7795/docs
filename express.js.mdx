@@ -19,7 +19,7 @@ npm install @decipher-sdk/express@latest
 
 Import `Decipher`, initialize it, and call `app.use` on it as below.
 
-> **IMPORTANT:** You must add `DecipherRequestHandler` **before** any other middleware and `DecipherErrorHandler` **immediately after** your controllers/endpoints to ensure errors are captured correctly.
+> **IMPORTANT:** You must add `Decipher.Handlers.requestHandler()` **before** any other middleware and `Decipher.Handlers.errorHandler` **immediately after** your controllers/endpoints to ensure errors are captured correctly.
 
 ```typescript app.ts
 // ...other imports
@@ -36,6 +36,7 @@ app.use(Decipher.Handlers.requestHandler());
 // Your controllers
 app.get("/", ...)
 app.get("/submit", ...)
+
 // IMPORTANT: The Decipher error handler must be immediately after the controllers.
 app.use(Decipher.Handlers.errorHandler);
 ```
