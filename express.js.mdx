@@ -41,3 +41,24 @@ app.get("/submit", ...)
 app.use(Decipher.Handlers.errorHandler);
 ```
 That's it! Decipher will now monitor and surface all your errors and exceptions on [the dashboard](https://www.prod.getdecipher.com).
+
+### Capturing error details on handled exceptions
+
+If you want to capture error details like the stack trace for handled exceptions (e.g. in a try/catch) you can use `Decipher.captureError(error)` like below:
+
+```typescript app.ts
+// ...other imports
+const Decipher = require('@decipher-sdk/express');
+
+app.get('/order', function (req, res) {
+    try {
+      thisIsAnUndefinedFunction()
+    } catch (error) {
+      Decipher.captureError(error)
+      res.status(500).send('An error occurred');
+    }
+});
+
+```
+
+Boom! Decipher will now include the stack trace and other context to help you and Decipher's AI debug.
