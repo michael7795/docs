@@ -42,6 +42,12 @@
             "express.js",
             "flask"
           ]
+        },
+        {
+          "group": "Sourcemaps",
+          "pages": [
+            "sourcemaps"
+          ]
         }
       ]
     },

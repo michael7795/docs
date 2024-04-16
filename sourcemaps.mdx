@@ -1,0 +1,25 @@
+---
+title: "Adding Sourcemaps"
+description: "You can upload your Sourcemaps to Decipher to enable seeing production JavaScript/TypeScript stack traces with the appropriate source code."
+---
+
+## Step 1:  Install the Sourcemap Uploader
+
+```shell Terminal
+npm install @decipher-sdk/sourcemap-uploader
+```
+
+## Step 2: Run the Sourcemap Uploader
+
+Run the uploader with the path to your sourcemaps, using your API key found under [Settings](https://prod.getdecipher.com/settings).
+
+```shell Terminal
+npx @decipher-sdk/sourcemap-uploader -k <YOUR_DECIPHER_API_KEY> <PATH_TO_SOURCEMAPS>
+```
+
+An example invocation fo the uploader looks like this (run from root of project):
+```shell Terminal
+npx @decipher-sdk/sourcemap-uploader -k decipher_eyJhbGciOiJ .
+```
+
+That's it! Decipher will now include source code in your error stack traces.
