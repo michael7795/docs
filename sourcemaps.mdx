@@ -29,13 +29,13 @@ npm install -D @decipher-sdk/sourcemap-uploader
 Run the uploader with the path to your sourcemaps, using your API key found under [Settings](https://prod.getdecipher.com/settings).
 
 ```shell Terminal
-npx @decipher-sdk/sourcemap-uploader -k <YOUR_DECIPHER_API_KEY> <PATH_TO_SOURCEMAPS>
+npx @decipher-sdk/sourcemap-uploader -k <YOUR_DECIPHER_API_KEY> -p <PATH_TO_SOURCEMAPS>
 ```
 
-An example invocation fo the uploader looks like this (run from root of project):
+An example invocation of the uploader looks like this (run from root of project):
 
 ```shell Terminal
-npx @decipher-sdk/sourcemap-uploader -k decipher_eyJhbGciOiJ .
+npx @decipher-sdk/sourcemap-uploader -k decipher_eyJhbGciOiJ -p app/src/.next/server/
 ```
 
 That's it! Decipher will now include source code in your error stack traces.
