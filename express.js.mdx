@@ -58,7 +58,14 @@ app.get('/order', function (req, res) {
       res.status(500).send('An error occurred');
     }
 });
-
 ```
+
+## Step 3 [IMPORTANT]: Add your sourcemaps
+When your code runs on production, it is likely minified and/or bundled, so we need to upload sourcemaps to see stack traces with the right code.
+
+Follow the [Uploading Sourcemaps](/sourcemaps) instructions to get unminified stack traces in your errors.
+
+----
+
 
 Boom! Decipher will now include the stack trace and other context to help you and Decipher's AI debug.
