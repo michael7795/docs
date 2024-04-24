@@ -40,7 +40,8 @@
           "pages": [
             "next.js",
             "express.js",
-            "flask"
+            "flask",
+            "fastAPI"
           ]
         },
         {
