@@ -3,9 +3,11 @@ title: "Express.js"
 description: "Decipher’s Express.js SDK allows for automatic capture of errors including helpful details like logs and raw payload data."
 ---
 
+> **⏱ Estimated Time To Completion: 3 minutes**
+
 ## Step 1: Sign in to Decipher
 
-Sign in to [Decipher](https://prod.getdecipher.com) using **your work email address** and a `customer_id` will be automatically created for you, which you'll use in the next step.
+Sign in to [Decipher](https://prod.getdecipher.com) using **your work email address** and a `customerId` will be automatically created for you, which you'll use in the next step.
 
 ## Step 2: Integrate the SDK
 
@@ -28,7 +30,7 @@ const Decipher = require('@decipher-sdk/express');
 const app = express();
 
 // A codebase name of your choice to identify errors in Decipher.
-Decipher.init({ codebase_id: "CODEBASE_NAME_OF_MY_CHOICE", customer_id: "MY_CUSTOMER_ID_FROM_STEP_1"})
+Decipher.init({ codebaseId: "CODEBASE_NAME_OF_MY_CHOICE", customerId: "MY_CUSTOMER_ID_FROM_STEP_1"})
 
 // IMPORTANT: The Decipher Request Handler must be the first middleware on the app.
 app.use(Decipher.Handlers.requestHandler());
@@ -44,7 +46,7 @@ That's it! Decipher will now monitor and surface all your errors and exceptions 
 
 ### Capturing error details on handled exceptions
 
-If you want to capture error details like the stack trace for handled exceptions (e.g. in a try/catch) you can use `Decipher.captureError(error)` like below:
+If you want to capture error details like the stack trace for handled exceptions (e.g. in a `try`/`catch` block) you can use `Decipher.captureError(error)`:
 
 ```typescript app.ts
 // ...other imports
@@ -52,7 +54,7 @@ const Decipher = require('@decipher-sdk/express');
 
 app.get('/order', function (req, res) {
     try {
-      thisIsAnUndefinedFunction()
+      thisFunctionMightThrowErrors()
     } catch (error) {
       Decipher.captureError(error)
       res.status(500).send('An error occurred');
@@ -66,6 +68,5 @@ When your code runs on production, it is likely minified and/or bundled, so we n
 Follow the [Uploading Sourcemaps](/sourcemaps) instructions to get unminified stack traces in your errors.
 
 ----
-
 
 Boom! Decipher will now include the stack trace and other context to help you and Decipher's AI debug.
