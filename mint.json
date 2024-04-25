@@ -36,7 +36,7 @@
       "group": "Get Started",
       "pages": [
         {
-          "group": "Frameworks",
+          "group": "Backend",
           "pages": [
             "next.js",
             "express.js",
@@ -44,6 +44,12 @@
             "fastAPI"
           ]
         },
+        {
+          "group": "Frontend",
+          "pages": [
+            "react"
+          ]
+        },        
         {
           "group": "Sourcemaps",
           "pages": [
