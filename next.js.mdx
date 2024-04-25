@@ -46,9 +46,9 @@ import type { NextRequest, NextResponse } from "next";
 import Decipher from "@/decipher.config";
 
 async function handler(req: NextRequest) {
-const body = await req.json();
-return NextResponse.json({ message: 'Processed successfully' },
-{ status: 200 });
+       const body = await req.json();
+       return NextResponse.json({ message: 'Processed successfully' },
+       { status: 200 });
 }
 
 export const POST = Decipher.withDecipher(handler);
