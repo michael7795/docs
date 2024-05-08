@@ -42,7 +42,7 @@ export default Decipher;
     Import `Decipher` into your route files and wrap your handlers using `Decipher.withDecipher` as below.
     ```typescript src/app/api/example/route.ts
 
-import type { NextRequest, NextResponse } from "next";
+import type { NextRequest, NextResponse } from "next/server";
 import Decipher from "@/decipher.config";
 
 async function handler(req: NextRequest) {
