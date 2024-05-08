@@ -75,5 +75,10 @@
     "twitter": "https://twitter.com/decipher_ai",
     "github": "https://github.com/decipherai",
     "linkedin": "https://www.linkedin.com/company/decipher-ai"
-  }
+  },
+  "analytics": {
+    "posthog": {
+        "apiKey": "phc_yKLr7cU7Si8U7hnoHS3QzJBcLXPLa3K692An23wzQVW"
+    }
+}
 }
