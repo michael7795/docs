@@ -116,7 +116,32 @@ async function handler(req: NextRequest) {
 export const POST = Decipher.withDecipher(handler);
 ```
 
-## [Optional] Step 5: For apps using tRPC, add the tRPC Middleware.
+
+### [Optional] Step 5: Add user information as context for your errors
+
+If you want to add user details to errors make sure to call `Decipher.setUser()` near the beginning of the request. 
+
+You can include any subset of the following: `id`, `email`, `name`
+
+```typescript route.ts
+// ...other imports
+import decipher_sdk
+
+async function handler(req: NextRequest) {
+  // ...
+
+  Decipher.setUser({ email: "test@test.com" });
+
+  try {
+    thisFunctionMightThrowErrors();
+  } catch (error) { 
+  
+  // ...
+
+}\
+```
+
+## [Optional] Step 6: For apps using tRPC, add the tRPC Middleware.
 
 Import `decipherTrpcMiddleware` and add it to the relevant procedure as below.
 
