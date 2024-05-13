@@ -67,7 +67,7 @@ Boom! Decipher will now include the stack trace and other context to help you an
 
 If you want to add user details to errors make sure to call `decipher_sdk.set_user()` near the beginning of the request. 
 
-You can include any subset of the following: `id`, `email`, `name`
+You can include any subset of the following: `id`, `email`, `username`
 
 ```python app.py
 // ...other imports
@@ -75,7 +75,7 @@ import decipher_sdk
 
 @app.route('/handled_example', methods=['GET'])
 def example_endpoint():
-    decipher_sdk.set_user({"id": "2958292", "email": "john@example.com", "name:": "John Smith"})
+    decipher_sdk.set_user({"id": "2958292", "email": "john@example.com", "username:": "John Smith"})
     // other code here
     return jsonify({"status": "success"}), 200
 
