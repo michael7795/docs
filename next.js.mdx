@@ -3,7 +3,7 @@ title: "Next.js"
 description: "Decipher’s Next.js SDK allows for automatic capture of errors including helpful details like logs and raw payload data."
 ---
 
-> **⏱ Estimated Time To Completion: < 5 minutes**
+<Note> **⏱ Estimated Time To Completion: 5 minutes**</Note>
 
 ## Step 1: Sign in to Decipher
 
@@ -46,9 +46,9 @@ import type { NextRequest, NextResponse } from "next/server";
 import Decipher from "@/decipher.config";
 
 async function handler(req: NextRequest) {
-       const body = await req.json();
-       return NextResponse.json({ message: 'Processed successfully' },
-       { status: 200 });
+const body = await req.json();
+return NextResponse.json({ message: 'Processed successfully' },
+{ status: 200 });
 }
 
 export const POST = Decipher.withDecipher(handler);
@@ -64,7 +64,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import { wrapApiHandlerWithDecipher } from "decipher-sdk";
 
 const handler = (req: NextApiRequest, res: NextApiResponse) => {
-       res.status(200).json({ name: "Jane Smith" });
+res.status(200).json({ name: "Jane Smith" });
 };
 
 export default wrapApiHandlerWithDecipher(handler, {
@@ -80,10 +80,23 @@ export default wrapApiHandlerWithDecipher(handler, {
 
 When your code runs on production, it is likely minified and/or bundled, so we need to upload sourcemaps to see stack traces with the right code.
 
-Follow the [Uploading Sourcemaps](/sourcemaps) instructions, noting that for NextJS projects, they're usually generated into the `.next/server` directory.
+Update your `next.config.[m]js` as below to make sure your sourcemaps are added to Decipher.
+```typescript next.config.mjs
+/** @type {import('next').NextConfig} */
+import { withDecipherConfig } from "@decipher-sdk/nextjs";
+
+const nextConfig = {
+  // ...your existing NextConfig
+};
+
+export default withDecipherConfig(nextConfig, {
+  apiKey: "YOUR_DECIPHER_API_KEY", // From the /settings page.
+});
+```
+Decipher will now automatically upload production sourcemaps upon new releases of your app.
+
 
 > If you don't use tRPC, **you're now done**! Decipher will now monitor and surface all your errors and exceptions on [the dashboard](https://www.prod.getdecipher.com). Consider the optional steps below to enhance Decipher's reporting.
-
 
 ---
 
@@ -116,10 +129,9 @@ async function handler(req: NextRequest) {
 export const POST = Decipher.withDecipher(handler);
 ```
 
-
 ## [Optional] Step 5: Add user information as context for your errors
 
-If you want to add user details to errors make sure to call `Decipher.setUser()` near the beginning of the request. 
+If you want to add user details to errors make sure to call `Decipher.setUser()` near the beginning of the request.
 
 You can include any subset of the following: `id`, `email`, `name`
 
@@ -134,8 +146,8 @@ async function handler(req: NextRequest) {
 
   try {
     thisFunctionMightThrowErrors();
-  } catch (error) { 
-  
+  } catch (error) {
+
   // ...
 
 }\

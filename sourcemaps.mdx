@@ -3,6 +3,12 @@ title: "Adding Sourcemaps"
 description: "You can upload your Sourcemaps to Decipher to enable seeing production JavaScript/TypeScript stack traces with the appropriate source code."
 ---
 
+<Warning>
+  IMPORTANT: If you are using Next.js, Decipher will automatically upload
+  Sourcemaps; you don't need these instructions. See the corresponding section
+  of the [Next.js](next.js#step-3-add-your-sourcemaps-important) docs.
+</Warning>
+
 ## Step 1: Update your `tsconfig.json` to generate sourcemaps.
 
 If you haven't already, add the following two options (`sourceMap` and `inlineSources`) to `compilerOptions`:
