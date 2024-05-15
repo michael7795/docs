@@ -22,7 +22,7 @@ npm install @decipher-sdk/frontend
 Simply import `WithDecipher` and declare it anywhere in your app, ideally at the top-level.
 
 ```typescript layout.tsx
-import { WithDecipher } from "@decipher-sdk/frontend";
+import WithDecipher from "@decipher-sdk/frontend";
 
 export default function RootLayout({
   children,
@@ -35,6 +35,13 @@ export default function RootLayout({
         <WithDecipher
           customerId="YOUR_CUSTOMER_ID_FROM_STEP_1"
           codebaseId="CODEBASE_NAME_OF_YOUR_CHOICE"
+          // User prop and all its fields are optional.
+          // This represents your current viewing user so that sessions are tagged accordingly.
+          user={{
+            id: "some_optional_user_id",
+            email: "some_optional_user_email",
+            username: "some_optional_username",
+          }}
         />
         {children}
       </body>
@@ -44,8 +51,14 @@ export default function RootLayout({
 ```
 
 ## Step 3 [IMPORTANT]: Add your sourcemaps
-
-When your code runs on production, it is likely minified and/or bundled, so we need to upload sourcemaps to see stack traces with the right code.
+<Warning>
+  IMPORTANT: If you are using Next.js for your frontend, Decipher can
+  automatically upload Sourcemaps; you don't need these instructions. Instead, see the
+  corresponding section of the
+  [Next.js](next.js#step-3-add-your-sourcemaps-important) docs.
+</Warning>
+When your code runs on production, it is likely minified and/or bundled, so we need
+to upload sourcemaps to see stack traces with the right code.
 
 Follow the [Uploading Sourcemaps](/sourcemaps) instructions to get unminified stack traces in your errors.
 
