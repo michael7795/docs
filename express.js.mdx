@@ -1,5 +1,5 @@
 ---
-title: "Express.js"
+title: "Setting up"
 description: "Decipher’s Express.js SDK allows for automatic capture of errors including helpful details like logs and raw payload data."
 ---
 
@@ -43,24 +43,6 @@ app.get("/submit", ...)
 app.use(Decipher.Handlers.errorHandler);
 ```
 That's it! Decipher will now monitor and surface all your errors and exceptions on [the dashboard](https://www.prod.getdecipher.com).
-
-### Capturing error details on handled exceptions
-
-If you want to capture error details like the stack trace for handled exceptions (e.g. in a `try`/`catch` block) you can use `Decipher.captureError(error)`:
-
-```typescript app.ts
-// ...other imports
-const Decipher = require('@decipher-sdk/express');
-
-app.get('/order', function (req, res) {
-    try {
-      thisFunctionMightThrowErrors()
-    } catch (error) {
-      Decipher.captureError(error)
-      res.status(500).send('An error occurred');
-    }
-});
-```
 
 ## Step 3 [IMPORTANT]: Add your sourcemaps
 When your code runs on production, it is likely minified and/or bundled, so we need to upload sourcemaps to see stack traces with the right code.

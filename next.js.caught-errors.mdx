@@ -1,0 +1,37 @@
+---
+title: "Reporting caught errors"
+description: "Decipher’s Next.js SDK allows for automatic capture of errors including helpful details like logs and raw payload data."
+---
+
+> **⏱ Estimated Time To Completion: < 1 minute**
+
+## Report caught errors to Decipher
+
+If you want to capture error details like the stack trace for handled exceptions (e.g. in a `try`/`catch` block) you can use `Decipher.captureError(error)`:
+
+```typescript route.ts
+import type { NextRequest, NextResponse } from "next";
+import Decipher from "@/decipher.config";
+
+async function handler(req: NextRequest) {
+  // ...
+  try {
+    thisFunctionMightThrowErrors();
+  } catch (error) {
+    Decipher.captureError(error);
+    return NextResponse.json(
+      { message: "An error occurred." },
+      { status: 500 }
+    );
+  }
+  // ...
+  return NextResponse.json(
+    { message: "Processed successfully" },
+    { status: 200 }
+  );
+}
+
+export const POST = Decipher.withDecipher(handler);
+```
+
+That's it! Decipher will now monitor and surface all your errors and exceptions on [the dashboard](https://www.prod.getdecipher.com).

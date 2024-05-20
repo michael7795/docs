@@ -1,0 +1,88 @@
+---
+title: "Setting up backend"
+description: "Decipher’s Next.js SDK allows for automatic capture of errors including helpful details like logs and raw payload data."
+---
+
+> **⏱ Estimated Time To Completion: < 5 minutes**
+
+## Step 1: Sign in to Decipher
+
+Sign in to [Decipher](https://prod.getdecipher.com) using **your work email address** and a `customerId` will be automatically created for you, which you'll use in the next step.
+
+## Step 2: Integrate the backend SDK
+
+### Install the SDK
+
+```shell Terminal
+npm install @decipher-sdk/nextjs@latest
+```
+
+### Update your API routes
+
+Choose instructions based on your app structure:
+
+<AccordionGroup>
+  <Accordion icon="rectangle-terminal" title="App Router" defaultOpen={true}>
+
+    The steps below apply if you're using [Next.js App Router](https://nextjs.org/docs/app).
+
+#### Create a `decipher.config.[ts|js]` at your project root (sibling to app/ directory)
+
+```typescript src/decipher.config.ts
+import Decipher from "@decipher-sdk/nextjs";
+
+Decipher.init({
+  codebaseId: "CODEBASE_NAME_OF_MY_CHOICE",
+  customerId: "MY_CUSTOMER_ID_FROM_STEP_1",
+});
+
+export default Decipher;
+```
+
+    Import `Decipher` into your route files and wrap your handlers using `Decipher.withDecipher` as below.
+    ```typescript src/app/api/example/route.ts
+
+import type { NextRequest, NextResponse } from "next/server";
+import Decipher from "@/decipher.config";
+
+async function handler(req: NextRequest) {
+       const body = await req.json();
+       return NextResponse.json({ message: 'Processed successfully' },
+       { status: 200 });
+}
+
+export const POST = Decipher.withDecipher(handler);
+```
+  </Accordion>
+  <Accordion icon="rectangle-terminal" title="Pages Router">
+        The steps below apply if you're using [Next.js Pages Router](https://nextjs.org/docs/pages).
+
+    Import `wrapApiHandlerWithDecipher` into your route files and wrap your handlers as below.
+    ```typescript src/pages/api/example/route.ts
+
+import type { NextApiRequest, NextApiResponse } from "next";
+import { wrapApiHandlerWithDecipher } from "decipher-sdk";
+
+const handler = (req: NextApiRequest, res: NextApiResponse) => {
+       res.status(200).json({ name: "Jane Smith" });
+};
+
+export default wrapApiHandlerWithDecipher(handler, {
+       // A codebase name of your choice to identify errors in Decipher.
+       codebaseId: "CODEBASE_NAME_OF_MY_CHOICE",
+       customerId: "MY_CUSTOMER_ID_FROM_STEP_1"
+});
+```
+  </Accordion>
+</AccordionGroup>
+
+## Step 3: Add your sourcemaps [IMPORTANT]
+
+When your code runs on production, it is likely minified and/or bundled, so we need to upload sourcemaps to see stack traces with the right code.
+
+Follow the [Uploading Sourcemaps](/sourcemaps) instructions, noting that for NextJS projects, they're usually generated into the `.next/server` directory.
+
+> If you don't use tRPC, **you're now done**! Decipher will now monitor and surface all your errors and exceptions on [the dashboard](https://www.prod.getdecipher.com). Consider the optional steps below to enhance Decipher's reporting.
+
+
+That's it! Decipher will now monitor and surface all your errors and exceptions on [the dashboard](https://www.prod.getdecipher.com).

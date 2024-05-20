@@ -1,0 +1,54 @@
+---
+title: "Setting up frontend"
+description: "Decipher’s Next.js Frontend SDK enables capturing session replays, AI analysis of user impact, and resolution steps."
+---
+
+> **⏱ Estimated Time To Completion: 2 minutes**
+
+## Step 1: Sign in to Decipher
+
+Sign in to [Decipher](https://prod.getdecipher.com) using **your work email address** and a `customerId` will be automatically created for you, which you'll use in the next step.
+
+## Step 2: Integrate the frontend SDK
+
+### Install the SDK
+
+```shell Terminal
+npm install @decipher-sdk/frontend
+```
+
+### Add the `WithDecipher` component to your app.
+
+Simply import `WithDecipher` and declare it anywhere in your app, ideally at the top-level.
+
+```typescript layout.tsx
+import { WithDecipher } from "@decipher-sdk/frontend";
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en">
+      <body>
+        <WithDecipher
+          customerId="YOUR_CUSTOMER_ID_FROM_STEP_1"
+          codebaseId="CODEBASE_NAME_OF_YOUR_CHOICE"
+        />
+        {children}
+      </body>
+    </html>
+  );
+}
+```
+
+## Step 3 [IMPORTANT]: Add your sourcemaps
+When your code runs on production, it is likely minified and/or bundled, so we need to upload sourcemaps to see stack traces with the right code.
+
+Follow the [Uploading Sourcemaps](/sourcemaps) instructions to get unminified stack traces in your errors.
+
+---
+
+That's it! Decipher will now automatically capture sessions with errors, alongside useful runtime data for debugging, and surface them on the [Dashboard](https://prod.getdecipher.com/).
+These sessions will be analyzed for user impact analysis and priority.

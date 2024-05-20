@@ -1,0 +1,26 @@
+---
+title: "Supporting tRPC"
+description: "Decipher’s Next.js SDK allows for automatic capture of errors including helpful details like logs and raw payload data."
+---
+
+> **⏱ Estimated Time To Completion: < 2 minute**
+
+## For apps using tRPC, add the tRPC Middleware.
+
+Import `decipherTrpcMiddleware` and add it to the relevant procedure as below.
+
+```typescript src/server/api/trpc.ts
+// ...
+import { decipherTrpcMiddleware } from "@decipher-sdk/nextjs";
+
+// ...
+export const publicProcedure = t.procedure.use(
+  decipherTrpcMiddleware({
+    // A codebase name of your choice to identify errors in Decipher.
+    codebaseId: "CODEBASE_NAME_OF_MY_CHOICE",
+    customerId: "MY_CUSTOMER_ID_FROM_STEP_1",
+  })
+);
+```
+
+That's it! Decipher will now monitor and surface all your errors and exceptions on [the dashboard](https://www.prod.getdecipher.com).

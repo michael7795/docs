@@ -1,0 +1,30 @@
+---
+title: "Identifying users"
+description: "Decipher’s Next.js SDK allows for automatic capture of errors including helpful details like logs and raw payload data."
+---
+
+> **⏱ Estimated Time To Completion: < 1 minute**
+
+## Add user information as context for your errors
+
+If you want to add user details to errors make sure to call `Decipher.setUser()` near the beginning of the request. 
+
+You can include any subset of the following: `id`, `email`, `username`
+
+```typescript route.ts
+// ...other imports
+import Decipher from "@/decipher.config";
+
+async function handler(req: NextRequest) {
+  // ...
+
+  Decipher.setUser({ email: "test@test.com" });
+
+  try {
+    thisFunctionMightThrowErrors();
+  } catch (error) { 
+  
+  // ...
+
+}
+```

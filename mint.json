@@ -36,11 +36,32 @@
       "group": "Get Started",
       "pages": [
         {
-          "group": "Backend",
+          "group": "Next.js",
           "pages": [
-            "next.js",
+            "next.js.frontend",
+            "next.js.backend",
+            "next.js.caught-errors",
+            "next.js.supporting-trpc",
+            "next.js.identifying-users",
+            "next.js.sourcemaps"
+          ]
+        },
+        {
+          "group": "Express.js",
+          "pages": [
             "express.js",
-            "flask",
+            "express.js.caught-errors"
+          ]
+        },
+        {
+          "group": "Flask",
+          "pages": [
+            "flask"
+          ]
+        },
+        {
+          "group": "FastAPI",
+          "pages": [
             "fastAPI"
           ]
         },
