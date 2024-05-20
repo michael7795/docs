@@ -72,7 +72,7 @@
           ]
         },        
         {
-          "group": "Sourcemaps",
+          "group": "Sourcemaps (non Next.js)",
           "pages": [
             "sourcemaps"
           ]

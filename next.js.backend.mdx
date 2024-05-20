@@ -76,13 +76,12 @@ export default wrapApiHandlerWithDecipher(handler, {
   </Accordion>
 </AccordionGroup>
 
-## Step 3: Add your sourcemaps [IMPORTANT]
+If you use tRPC, you'll need need to follow the [Supporting tRPC](/next.js.supporting-trpc)
+
+## Last step: Add your sourcemaps
 
 When your code runs on production, it is likely minified and/or bundled, so we need to upload sourcemaps to see stack traces with the right code.
 
-Follow the [Uploading Sourcemaps](/sourcemaps) instructions, noting that for NextJS projects, they're usually generated into the `.next/server` directory.
-
-> If you don't use tRPC, **you're now done**! Decipher will now monitor and surface all your errors and exceptions on [the dashboard](https://www.prod.getdecipher.com). Consider the optional steps below to enhance Decipher's reporting.
-
+Follow the [Uploading Sourcemaps](/next.js.sourcemap) instructions.
 
 That's it! Decipher will now monitor and surface all your errors and exceptions on [the dashboard](https://www.prod.getdecipher.com).

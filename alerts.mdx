@@ -5,19 +5,24 @@ description: "Decipher allows configuring alerts to be notified when there are i
 
 > Please make sure [you've set Decipher up](/intro#framework-docs) in your application before continuing.
 
-## Step 1: Sign in to Decipher.
+## Find the alerts page
 
-Sign in to [Decipher](https://prod.getdecipher.com/settings) using **your work email address**.
+Go to the [Alerts](https://prod.getdecipher.com/alerts) and make sure to login using **your work email address**.
 
-## Step 2: Hit the "Enable Slack Alerts" and authorize Decipher to send alerts to a chosen Slack channel.
+## Slack Alerts
+Hit the "Enable Slack Alerts" and authorize Decipher to send alerts to a chosen Slack channel.
 
 That's it! Decipher will now send alerts to this channel.
 
----
+## Email Alerts
+You can turn on email alerts by clicking the toggle.
 
-## What does Decipher alert on?
-Currently, Decipher alerts when there is a NEW error. That is, an error that the application hasn't seen (or alerted on) before.
+Email alerts will be sent to all team members.
+
+## Alert Rules
+You can choose between "New Errors Only" and "Every Error Instance"
+
+*New Errors Only:* Notifies only on errors that the application hasn't seen (or alerted on) before.
+*Every Error Istance:* Notifies all errors including those that have been seen before.
 
 An error is considered "new" when the codebase_id/error_message/endpoint combination is new.
-
-We are working on enabling more customizability to alerts.

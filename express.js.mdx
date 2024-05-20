@@ -44,7 +44,7 @@ app.use(Decipher.Handlers.errorHandler);
 ```
 That's it! Decipher will now monitor and surface all your errors and exceptions on [the dashboard](https://www.prod.getdecipher.com).
 
-## Step 3 [IMPORTANT]: Add your sourcemaps
+## Last step: Add your sourcemaps
 When your code runs on production, it is likely minified and/or bundled, so we need to upload sourcemaps to see stack traces with the right code.
 
 Follow the [Uploading Sourcemaps](/sourcemaps) instructions to get unminified stack traces in your errors.
