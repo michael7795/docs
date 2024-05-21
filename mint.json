@@ -42,8 +42,7 @@
             "next.js.backend",
             "next.js.caught-errors",
             "next.js.supporting-trpc",
-            "next.js.identifying-users",
-            "next.js.sourcemaps"
+            "next.js.identifying-users"
           ]
         },
         {
