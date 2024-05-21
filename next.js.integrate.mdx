@@ -1,0 +1,26 @@
+---
+title: "Integrate Decipher"
+description: "Decipher’s Next.js SDK enables source maps, capturing frontend errors, session replays, AI analysis of user impact, and resolution steps. This will also upload your Next.js Sourcemaps to Decipher to enable seeing production JavaScript/TypeScript stack traces with the appropriate source code."
+---
+
+> **⏱ Estimated Time To Completion: < 2 minute**
+
+## Setting up the SDK
+
+Update your `next.config.[m]js` as below to make sure your sourcemaps are added to Decipher.
+```typescript next.config.mjs
+/** @type {import('next').NextConfig} */
+import { withDecipherConfig } from "@decipher-sdk/nextjs";
+
+const nextConfig = {
+  // ...your existing NextConfig
+};
+
+export default withDecipherConfig(nextConfig, {
+  apiKey: "YOUR_DECIPHER_API_KEY", // From the /settings page.
+  frontendCodebaseId: "YOUR_FRONTEND_CODEBASE_NAME", // you pick this one
+  customerId: "YOUR_CUSTOMER_ID", // from /settings page
+});
+```
+
+Decipher will now automatically capture frontend errors and session replays, as well as upload production sourcemaps upon new releases of your app and include source code in your error stack traces.

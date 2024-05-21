@@ -5,6 +5,8 @@ description: "Decipher’s Next.js SDK allows for automatic capture of errors in
 
 > **⏱ Estimated Time To Completion: < 5 minutes**
 
+Make sure you've integrated Decipher which uploads the sourcemaps for your server. This will ensure your stack traces are enriched with code. See [Next.js Frontend setup](/next.js.integrate) instructions.
+
 ## Step 1: Sign in to Decipher
 
 Sign in to [Decipher](https://prod.getdecipher.com) using **your work email address** and a `customerId` will be automatically created for you, which you'll use in the next step.
@@ -77,11 +79,5 @@ export default wrapApiHandlerWithDecipher(handler, {
 </AccordionGroup>
 
 If you use tRPC, you'll need need to follow the [Supporting tRPC](/next.js.supporting-trpc)
-
-## Last step: Add your sourcemaps
-
-When your code runs on production, it is likely minified and/or bundled, so we need to upload sourcemaps to see stack traces with the right code.
-
-Make sure you've setup frontend which will also upload sourcemaps for your server. See [Next.js Frontend setup](/next.js.sourcemaps) instructions.
 
 That's it! Decipher will now monitor and surface all your errors and exceptions on [the dashboard](https://www.prod.getdecipher.com).

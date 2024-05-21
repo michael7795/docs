@@ -38,7 +38,7 @@
         {
           "group": "Next.js",
           "pages": [
-            "next.js.sourcemaps",
+            "next.js.integrate",
             "next.js.backend",
             "next.js.caught-errors",
             "next.js.supporting-trpc",
