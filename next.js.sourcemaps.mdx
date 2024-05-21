@@ -1,13 +1,11 @@
 ---
-title: "Enriched Stack Traces (Sourcemaps)"
-description: "You can upload your Next.js Sourcemaps to Decipher to enable seeing production JavaScript/TypeScript stack traces with the appropriate source code."
+title: "Frontend and Enriched Stack Traces"
+description: "Decipher’s Next.js Frontend SDK enables capturing frtonend errors, session replays, AI analysis of user impact, and resolution steps. This will also upload your Next.js Sourcemaps to Decipher to enable seeing production JavaScript/TypeScript stack traces with the appropriate source code."
 ---
 
 > **⏱ Estimated Time To Completion: < 2 minute**
 
-## Add your sourcemaps
-
-When your code runs on production, it is likely minified and/or bundled, so we need to upload sourcemaps to see stack traces with the right code.
+## Setting up frontend SDK and sourcemas
 
 Update your `next.config.[m]js` as below to make sure your sourcemaps are added to Decipher.
 ```typescript next.config.mjs
@@ -20,6 +18,9 @@ const nextConfig = {
 
 export default withDecipherConfig(nextConfig, {
   apiKey: "YOUR_DECIPHER_API_KEY", // From the /settings page.
+  frontendCodebaseId: "YOUR_FRONTEND_CODEBASE_NAME", // you pick this one
+  customerId: "YOUR_CUSTOMER_ID", // from /settings page
 });
 ```
-Decipher will now automatically upload production sourcemaps upon new releases of your app and include source code in your error stack traces.
+
+Decipher will now automatically capture frontend errors and session replays, as well as upload production sourcemaps upon new releases of your app and include source code in your error stack traces.
