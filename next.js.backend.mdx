@@ -1,6 +1,7 @@
 ---
 title: "Capturing backend errors"
 description: "Decipher’s Next.js SDK captures all frontend errors automatically, and can additionally enable automatic capture of backend Route errors including helpful details like logs and raw payload data. Follow the steps below."
+mode: "wide"
 ---
 <Check> ⏱ Estimated Time To Completion: < 5 minutes </Check>
 
@@ -10,24 +11,11 @@ description: "Decipher’s Next.js SDK captures all frontend errors automaticall
 
 Sign in to [Decipher](https://prod.getdecipher.com) using **your work email address** and a `customerId` will be automatically created for you, which you'll use in the next step.
 
-## Step 2: Integrate the backend SDK
+## Step 2: Initialize Decipher on the backend
 
-### Install the SDK
+You should have already installed the Decipher NextJS SDK when you [integrated Decipher](/next.js.integrate). This is required to continue.
 
-```shell Terminal
-npm install @decipher-sdk/nextjs@latest
-```
-
-### Update your API routes
-
-Choose instructions based on your app structure:
-
-<AccordionGroup>
-  <Accordion icon="rectangle-terminal" title="App Router" defaultOpen={true}>
-
-    The steps below apply if you're using [Next.js App Router](https://nextjs.org/docs/app).
-
-#### Create a `decipher.config.[ts|js]` at your project root (sibling to app/ directory)
+Create a `decipher.config.[ts|js]` at your project root (sibling to app/ or pages/ directory).
 
 ```typescript src/decipher.config.ts
 import Decipher from "@decipher-sdk/nextjs";
@@ -39,6 +27,15 @@ Decipher.init({
 
 export default Decipher;
 ```
+
+## Step 3: Update your API routes
+
+Choose instructions based on your app structure:
+
+<AccordionGroup>
+  <Accordion icon="rectangle-terminal" title="App Router" defaultOpen={true}>
+
+    The steps below apply if you're using [Next.js App Router](https://nextjs.org/docs/app).
 
     Import `Decipher` into your route files and wrap your handlers using `Decipher.withDecipher` as below.
     ```typescript src/app/api/example/route.ts
@@ -58,25 +55,21 @@ export const POST = Decipher.withDecipher(handler);
   <Accordion icon="rectangle-terminal" title="Pages Router">
         The steps below apply if you're using [Next.js Pages Router](https://nextjs.org/docs/pages).
 
-    Import `wrapApiHandlerWithDecipher` into your route files and wrap your handlers as below.
+    Import `Decipher` into your route files and wrap your handlers using `Decipher.withDecipherPage` as below.
     ```typescript src/pages/api/example/route.ts
 
 import type { NextApiRequest, NextApiResponse } from "next";
-import { wrapApiHandlerWithDecipher } from "decipher-sdk";
+import { Decipher } from "@/decipher.config"
 
 const handler = (req: NextApiRequest, res: NextApiResponse) => {
        res.status(200).json({ name: "Jane Smith" });
 };
 
-export default wrapApiHandlerWithDecipher(handler, {
-       // A codebase name of your choice to identify errors in Decipher.
-       codebaseId: "CODEBASE_NAME_OF_MY_CHOICE",
-       customerId: "MY_CUSTOMER_ID_FROM_STEP_1"
-});
+export default Decipher.withDecipherPage(handler);
 ```
   </Accordion>
 </AccordionGroup>
 
-If you use tRPC, you'll need need to follow the [Supporting tRPC](/next.js.supporting-trpc)
+If you use tRPC, you'll need need to follow the [Supporting tRPC](/next.js.supporting-trpc) guide.
 
 That's it! Decipher will now monitor and surface all your errors and exceptions on [the dashboard](https://www.prod.getdecipher.com).
