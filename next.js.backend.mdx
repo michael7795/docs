@@ -15,11 +15,6 @@ mode: "wide"
 
 <Steps>
 
-<Step title="Sign in to Decipher">
-
-Sign in to [Decipher](https://prod.getdecipher.com) using **your work email address** and a `customerId` will be automatically created for you, which you'll use in the next step.
-
-</Step>
 <Step title="Initialize Decipher on the backend">
 
 You should have already installed the Decipher NextJS SDK when you [integrated Decipher](/next.js.integrate). This is required to continue.
@@ -31,7 +26,7 @@ import Decipher from "@decipher-sdk/nextjs";
 
 Decipher.init({
   codebaseId: "CODEBASE_NAME_OF_MY_CHOICE",
-  customerId: "MY_CUSTOMER_ID_FROM_STEP_1",
+  customerId: "MY_CUSTOMER_ID", // Find in /settings
 });
 
 export default Decipher;
