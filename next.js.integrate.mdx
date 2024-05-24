@@ -32,6 +32,8 @@ Decipher will now automatically capture frontend errors and session replays, as 
 <Note>Note that Decipher automatically creates a `decipher.client.config.ts` file at the root of your repository with the values you add here. Do not modify that file; make changes to `next.config.[m]js` instead.</Note>
 
 ## Test the integration
-Download this [example page.jsx file](https://drive.google.com/drive/folders/1EmANF9NgfnwOO2oHor8cL-JE7-jBn_Io?usp=drive_link) which will force an error to confirm that everything is setup as expected.
+To ensure the SDK works, try manually throwing any error from your locally-running frontend and verify it shows up on the Decipher dashboard.
+
+Alternatively, you can also download this [example page.jsx file](https://drive.google.com/drive/folders/1EmANF9NgfnwOO2oHor8cL-JE7-jBn_Io?usp=drive_link) which will force an error to confirm that everything is setup as expected.
 
 Put it under `app/decipher-example/page.jsx` and then load up http://localhost:XXXX/decipher-example.

@@ -22,7 +22,7 @@ You should have already installed the Decipher NextJS SDK when you [integrated D
 Create a `decipher.config.[ts|js]` at your project root (sibling to app/ or pages/ directory).
 
 ```typescript src/decipher.config.ts
-import Decipher from "@decipher-sdk/nextjs";
+import { Decipher } from "@decipher-sdk/nextjs";
 
 Decipher.init({
   codebaseId: "CODEBASE_NAME_OF_MY_CHOICE",
@@ -64,7 +64,7 @@ export const POST = Decipher.withDecipher(handler);
     ```typescript src/pages/api/example/route.ts
 
 import type { NextApiRequest, NextApiResponse } from "next";
-import { Decipher } from "@/decipher.config";
+import Decipher from "@/decipher.config";
 
 const handler = (req: NextApiRequest, res: NextApiResponse) => {
       res.status(200).json({ name: "Jane Smith" });
