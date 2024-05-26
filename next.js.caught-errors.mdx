@@ -1,15 +1,34 @@
 ---
 title: "Reporting caught errors"
-description: "Decipher’s Next.js SDK allows for automatic capture of backend errors including helpful details like logs and raw payload data."
+description: "Decipher’s Next.js SDK allows for reporting backend Next.js errors including helpful details like logs and raw payload data."
 mode: "wide"
 ---
 
-<Check> ⏱ Estimated Time To Completion: < 1 minute</Check>
+<Check> ⏱ Estimated Time To Completion: < 2 minutes</Check>
 
 <Info>Reporting caught errors for frontend is in progress. These docs currently only apply to backend errors.</Info>
 ## Report caught errors to Decipher
 
-If you want to capture error's with handled exceptions (e.g. in a `try`/`catch` block) you can use `Decipher.captureError(error)`:
+<Steps>
+<Step title="Initialize Decipher on the backend">
+
+You should have already installed the Decipher NextJS SDK when you [integrated Decipher](/next.js.integrate). This is required to continue.
+
+Create a `decipher.config.[ts|js]` at your project root (sibling to app/ or pages/ directory).
+
+```typescript src/decipher.config.ts
+import { Decipher } from "@decipher-sdk/nextjs";
+
+Decipher.init({
+  codebaseId: "CODEBASE_NAME_OF_MY_CHOICE",
+  customerId: "MY_CUSTOMER_ID", // Find in /settings
+});
+
+export default Decipher;
+```
+</Step>
+<Step title="Report backend errors">
+To capture error's with handled exceptions (e.g. in a `try`/`catch` block), use `Decipher.captureError(error)`:
 
 ```typescript route.ts
 import type { NextRequest, NextResponse } from "next";
@@ -35,5 +54,6 @@ async function handler(req: NextRequest) {
 
 export const POST = Decipher.withDecipher(handler);
 ```
-
-That's it! Decipher will now capture caught errors.
+</Step>
+</Steps>
+That's it! Decipher will now capture caught errors and automatically include helpful data associated with the request.
