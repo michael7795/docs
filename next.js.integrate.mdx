@@ -7,7 +7,14 @@ mode: "wide"
 <Check>⏱ Estimated Time To Completion: < 2 minutes</Check>
 <Info>TypeScript is fully supported. Pure JavaScript projects will be supported soon.</Info>
 
-## Setting up the SDK
+<Steps>
+<Step title="Install the SDK"> 
+
+```shell Terminal
+npm install @decipher-sdk/nextjs
+```
+</Step>
+<Step title="Add `withDecipherConfig` to your nextConfig">
 
 Update your `next.config.[m]js` as below to integrate Decipher. 
 ```typescript next.config.mjs
@@ -28,12 +35,14 @@ export default withDecipherConfig(nextConfig, {
 If you have another function that computes your config (e.g. `withSentryConfig`) have the `withDecipherConfig` wrap that.
 
 Decipher will now automatically capture frontend errors and session replays, as well as upload production sourcemaps upon new releases of your app and include source code in your error stack traces.
-
 <Note>Note that Decipher automatically creates a `decipher.client.config.ts` file at the root of your repository with the values you add here. Do not modify that file; make changes to `next.config.[m]js` instead.</Note>
+</Step> 
 
-## Test the integration
+<Step title="Test the integration">
 To ensure the SDK works, try manually throwing any error from your locally-running frontend and verify it shows up on the Decipher dashboard.
 
 Alternatively, you can also download this [example page.jsx file](https://drive.google.com/drive/folders/1EmANF9NgfnwOO2oHor8cL-JE7-jBn_Io?usp=drive_link) which will force an error to confirm that everything is setup as expected.
 
 Put it under `app/decipher-example/page.jsx` and then load up http://localhost:XXXX/decipher-example.
+</Step>
+</Steps>
