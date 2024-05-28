@@ -7,7 +7,7 @@ description: "Decipher’s Express.js SDK allows for automatic capture of errors
 
 ## Step 1: Sign in to Decipher
 
-Sign in to [Decipher](https://prod.getdecipher.com) using **your work email address** and a `customerId` will be automatically created for you, which you'll use in the next step.
+Sign in to [Decipher](https://app.getdecipher.com) using **your work email address** and a `customerId` will be automatically created for you, which you'll use in the next step.
 
 ## Step 2: Integrate the SDK
 
@@ -42,7 +42,7 @@ app.get("/submit", ...)
 // IMPORTANT: The Decipher error handler must be immediately after the controllers.
 app.use(Decipher.Handlers.errorHandler);
 ```
-That's it! Decipher will now monitor and surface all your errors and exceptions on [the dashboard](https://www.prod.getdecipher.com).
+That's it! Decipher will now monitor and surface all your errors and exceptions on [the dashboard](https://www.app.getdecipher.com).
 
 ## Last step: Add your sourcemaps
 When your code runs on production, it is likely minified and/or bundled, so we need to upload sourcemaps to see stack traces with the right code.

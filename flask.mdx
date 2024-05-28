@@ -7,7 +7,7 @@ description: "Decipher’s Flask SDK allows for automatic capture of errors incl
 
 ## Step 1: Sign in to Decipher
 
-Sign in to [Decipher](https://prod.getdecipher.com) using **your work email address** and a `customer_id` will be automatically created for you, which you'll use in the next step.
+Sign in to [Decipher](https://app.getdecipher.com) using **your work email address** and a `customer_id` will be automatically created for you, which you'll use in the next step.
 
 ## Step 2: Integrate the SDK
 
@@ -30,7 +30,7 @@ app = Flask(__name__)
 decipher_sdk.init(
     # A codebase name of your choice to identify errors in Decipher.
     codebase_id="CODEBASE_NAME_OF_MY_CHOICE",
-    # This comes from https://www.prod.getdecipher.com/settings; see Step 1.
+    # This comes from https://www.app.getdecipher.com/settings; see Step 1.
     customer_id="MY_CUSTOMER_ID_FROM_STEP_1"
 )
 
@@ -40,7 +40,7 @@ def submit_data():
     return jsonify({"status": "success", "received_data": data})
 
 ```
-That's it! Decipher will now monitor and surface all your errors and exceptions on [the dashboard](https://www.prod.getdecipher.com).
+That's it! Decipher will now monitor and surface all your errors and exceptions on [the dashboard](https://www.app.getdecipher.com).
 
 
 ### Capturing error details on handled exceptions
