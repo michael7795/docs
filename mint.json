@@ -66,12 +66,6 @@
           "pages": [
             "react"
           ]
-        },        
-        {
-          "group": "Sourcemaps (non Next.js)",
-          "pages": [
-            "sourcemaps"
-          ]
         }
       ]
     },
