@@ -27,7 +27,9 @@ import { DecipherFrontend } from "@decipher-sdk/frontend";
 
 DecipherFrontend.init({
   customerId: "YOUR_CUSTOMER_ID_FROM_STEP_1",
-  codebaseId: "YOUR_FRONTEND_CODEBASE_NAME", // You choose this to group errors in Decipher.
+  // You choose the codebaseId to group errors in Decipher.
+  // It can be anything! e.g. "contractify_frontend"
+  codebaseId: "FRONTEND_CODEBASE_NAME_OF_YOUR_CHOICE", 
 });
 
 export default function RootLayout({
