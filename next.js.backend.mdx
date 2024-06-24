@@ -1,5 +1,5 @@
 ---
-title: "Capturing backend errors"
+title: "Capturing API Route Errors"
 description: "Decipher’s Next.js SDK captures all frontend errors automatically, and can additionally enable automatic capture of backend Route errors including helpful details like logs and raw payload data. Follow the steps below."
 mode: "wide"
 ---
@@ -49,9 +49,9 @@ import type { NextRequest, NextResponse } from "next/server";
 import Decipher from "@/decipher.config";
 
 async function handler(req: NextRequest) {
-      const body = await req.json();
-      return NextResponse.json({ message: 'Processed successfully' },
-      { status: 200 });
+const body = await req.json();
+return NextResponse.json({ message: 'Processed successfully' },
+{ status: 200 });
 }
 
 export const POST = Decipher.withDecipher(handler);
@@ -67,7 +67,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import Decipher from "@/decipher.config";
 
 const handler = (req: NextApiRequest, res: NextApiResponse) => {
-      res.status(200).json({ name: "Jane Smith" });
+res.status(200).json({ name: "Jane Smith" });
 };
 
 export default Decipher.withDecipherPage(handler);

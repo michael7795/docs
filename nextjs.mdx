@@ -7,15 +7,36 @@ mode: "wide"
 <Check>⏱ Estimated Time To Completion: < 2 minutes</Check>
 
 <Steps>
-<Step title="Install the SDK"> 
+<Step title="Create a Decipher account">
+
+Login to [Decipher](https://app.getdecipher.com) using **Gmail** and a `customerId` and `apiKey` will be automatically created for you, which you'll use in the next step.
+
+You can find these credentials in the `Dashboard/Organization Settings` page.
+
+</Step>
+<Step title="Create a NextJS project">
+
+You can use an existing NextJS project. If you don't have one, you can create a new NextJS project using the following command:
+
+```shell Terminal
+npx create-next-app@latest
+```
+
+</Step>
+
+<Step title="Install the SDK">
+
+Run the following command to install the Decipher NextJS SDK:
 
 ```shell Terminal
 npm install @decipher-sdk/nextjs
 ```
+
 </Step>
 <Step title="Update your NextConfig to use Decipher.">
 
-Update your `next.config.[m]js` as below to integrate Decipher. 
+Update your `next.config.[m]js` as below to integrate Decipher.
+
 ```typescript next.config.[m]js
 /** @type {import('next').NextConfig} */
 import { withDecipherConfig } from "@decipher-sdk/nextjs";
@@ -34,14 +55,25 @@ export default withDecipherConfig(nextConfig, {
 If you have another function that computes your config (e.g. `withSentryConfig`) have the `withDecipherConfig` wrap that.
 
 Decipher will now automatically capture frontend errors and session replays, as well as upload production sourcemaps upon new releases of your app and include source code in your error stack traces.
+
 <Note>Note that Decipher automatically creates a `decipher.client.config.ts` file at the root of your repository with the values you add here. Do not modify that file; make changes to `next.config.[m]js` instead.</Note>
-</Step> 
+</Step>
 
 <Step title="Test the integration">
 To ensure the SDK works, try manually throwing any error from your locally-running frontend and verify it shows up on the Decipher dashboard.
 
 Alternatively, you can also download this [example page.jsx file](https://drive.google.com/drive/folders/1EmANF9NgfnwOO2oHor8cL-JE7-jBn_Io?usp=drive_link) which will force an error to confirm that everything is setup as expected.
 
-Put it under `app/decipher-example/page.jsx` and then load up http://localhost:XXXX/decipher-example.
+Put it under `app/decipher-example/page.jsx` and then run the following command in your terminal to start your app:
+
+```shell Terminal
+npm run dev
+```
+
+You can then go to http://localhost:XXXX/decipher-example in your browser to see the error.
+
+If you navigate to the [Decipher dashboard](https://app.getdecipher.com) you should see the error.
+
+<Note>Errors during local development will not be shown in the dashboard automatically. To see your local errors go to the `Dashboard/Organization Settings` page, and toggle the "Show Local Errors". Navigate back to the `Dashboard/Issues` page to see your local development errors in the dashboard.</Note>
 </Step>
 </Steps>
