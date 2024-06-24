@@ -1,23 +1,21 @@
 ---
 title: "Capturing API Route Errors"
-description: "Decipher’s Next.js SDK captures all frontend errors automatically, and can additionally enable automatic capture of backend Route errors including helpful details like logs and raw payload data. Follow the steps below."
+description: "Decipher’s Next.js SDK captures all frontend errors automatically, and can additionally enable automatic capture of API Route errors including helpful details like logs and raw payload data."
 mode: "wide"
 ---
 
 <Check> ⏱ Estimated Time To Completion: < 5 minutes </Check>
 
-<Note>
+<Warning>
   {" "}
-  Before continuing, **make sure you've [integrated Decipher](/next.js.integrate)**
-  which ensures your bundled/minified stack traces are enriched with code on production,
-  by uploading sourcemaps.{" "}
-</Note>
+  Before continuing, make sure you've **[completed this guide](/nextjs)**.
+</Warning>
+
+Complete the following steps to start capturing errors from your API routes.
 
 <Steps>
 
 <Step title="Initialize Decipher on the backend">
-
-You should have already installed the Decipher NextJS SDK when you [integrated Decipher](/next.js.integrate). This is required to continue.
 
 Create a `decipher.config.[ts|js]` at your project root (sibling to app/ or pages/ directory).
 

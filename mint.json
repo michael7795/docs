@@ -37,10 +37,10 @@
           "group": "Next.js",
           "pages": [
             "nextjs",
-            "next.js.backend",
-            "next.js.caught-errors",
-            "next.js.supporting-trpc",
-            "next.js.identifying-users"
+            "nextjs-api-routes",
+            "nextjs-caught-errors",
+            "nextjs-trpc",
+            "nextjs-identifying-users"
           ]
         },
         {
@@ -57,7 +57,7 @@
         },
         {
           "group": "JavaScript",
-          "pages": ["js_frontend"]
+          "pages": ["js-frontend"]
         }
       ]
     },
