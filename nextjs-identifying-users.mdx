@@ -5,11 +5,11 @@ mode: "wide"
 ---
 
 <Check> ⏱ Estimated Time To Completion: < 1 minute</Check>
-<Info>Identifying users for frontend errors is in progress. These docs currently only apply to backend errors.</Info>
+<Info>These docs currently only apply to backend errors. Identifying users for frontend error is on our roadmap.</Info>
 
 ## Add user information as context for your errors
 
-If you want to add user details to errors make sure to call `Decipher.setUser()` near the beginning of the request. 
+If you want to add user details to errors make sure to call `Decipher.setUser()` near the beginning of the request.
 
 You can include any subset of the following: `id`, `email`, or `username`.
 
@@ -24,8 +24,8 @@ async function handler(req: NextRequest) {
 
   try {
     thisFunctionMightThrowErrors();
-  } catch (error) { 
-  
+  } catch (error) {
+
   // ...
 
 }
