@@ -29,7 +29,7 @@ DecipherFrontend.init({
   customerId: "YOUR_CUSTOMER_ID_FROM_STEP_1",
   // You choose the codebaseId to group errors in Decipher.
   // It can be anything! e.g. "contractify_frontend"
-  codebaseId: "FRONTEND_CODEBASE_NAME_OF_YOUR_CHOICE", 
+  codebaseId: "FRONTEND_CODEBASE_NAME_OF_YOUR_CHOICE",
 });
 
 export default function RootLayout({
@@ -42,6 +42,7 @@ export default function RootLayout({
   );
 }
 ```
+
 ---
 
 That's it! Decipher will now automatically capture sessions with errors, alongside useful runtime data for debugging, and surface them on the [Dashboard](https://app.getdecipher.com/).

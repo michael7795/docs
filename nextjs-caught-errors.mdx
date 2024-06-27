@@ -6,7 +6,10 @@ mode: "wide"
 
 <Check> ⏱ Estimated Time To Completion: < 2 minutes</Check>
 
-<Info>Reporting caught errors for frontend is in progress. These docs currently only apply to backend errors.</Info>
+<Info>
+  These docs currently only apply to backend errors. Capturing context for
+  frontend error is on our roadmap.
+</Info>
 ## Report caught errors to Decipher
 
 <Steps>
@@ -26,6 +29,7 @@ Decipher.init({
 
 export default Decipher;
 ```
+
 </Step>
 <Step title="Report backend errors">
 To capture error's with handled exceptions (e.g. in a `try`/`catch` block), use `Decipher.captureError(error)`:
@@ -54,6 +58,7 @@ async function handler(req: NextRequest) {
 
 export const POST = Decipher.withDecipher(handler);
 ```
+
 </Step>
 </Steps>
 That's it! Decipher will now capture caught errors and automatically include helpful data associated with the request.

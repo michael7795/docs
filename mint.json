@@ -28,9 +28,7 @@
   "navigation": [
     {
       "group": "Introduction",
-      "pages": [
-        "intro"
-      ]
+      "pages": ["intro"]
     },
     {
       "group": "Get Started",
@@ -38,51 +36,38 @@
         {
           "group": "Next.js",
           "pages": [
-            "next.js.integrate",
-            "next.js.backend",
-            "next.js.caught-errors",
-            "next.js.supporting-trpc",
-            "next.js.identifying-users"
+            "nextjs",
+            "nextjs-api-routes",
+            "nextjs-caught-errors",
+            "nextjs-trpc",
+            "nextjs-identifying-users"
           ]
         },
         {
           "group": "Express.js",
-          "pages": [
-            "express.js",
-            "express.js.caught-errors"
-          ]
+          "pages": ["express.js", "express.js.caught-errors"]
         },
         {
           "group": "Flask",
-          "pages": [
-            "flask"
-          ]
+          "pages": ["flask"]
         },
         {
           "group": "FastAPI",
-          "pages": [
-            "fastAPI"
-          ]
+          "pages": ["fastAPI"]
         },
         {
-          "group": "Frontend",
-          "pages": [
-            "react"
-          ]
+          "group": "JavaScript",
+          "pages": ["js-frontend"]
         }
       ]
     },
     {
       "group": "Alerts",
-      "pages": [
-        "alerts"
-      ]
+      "pages": ["alerts"]
     },
     {
       "group": "Advanced",
-      "pages": [
-        "advanced"
-      ]
+      "pages": ["advanced"]
     }
   ],
   "footerSocials": {
@@ -92,7 +77,7 @@
   },
   "analytics": {
     "posthog": {
-        "apiKey": "phc_yKLr7cU7Si8U7hnoHS3QzJBcLXPLa3K692An23wzQVW"
+      "apiKey": "phc_yKLr7cU7Si8U7hnoHS3QzJBcLXPLa3K692An23wzQVW"
     }
-}
+  }
 }
